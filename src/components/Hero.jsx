@@ -21,26 +21,28 @@ const heroData = [
   },
 ];
 
-// Custom arrows
-const NextArrow = ({ onClick }) => (
-  <div
-    onClick={onClick}
-    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white p-3 rounded-full cursor-pointer bg-black/50 hover:bg-black/70"
-  >
-    <img src="/next.svg" alt="Next" className="w-6 h-6" />
-  </div>
-);
+// Custom arrows that hide when sideBar is open
+const NextArrow = ({ onClick, sideBar }) =>
+  !sideBar && (
+    <div
+      onClick={onClick}
+      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white p-3 rounded-full cursor-pointer bg-black/50 hover:bg-black/70"
+    >
+      <img src="/next.svg" alt="Next" className="w-6 h-6" />
+    </div>
+  );
 
-const PrevArrow = ({ onClick }) => (
-  <div
-    onClick={onClick}
-    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white p-3 rounded-full cursor-pointer bg-black/50 hover:bg-black/70"
-  >
-    <img src="/prev.svg" alt="Previous" className="w-6 h-6" />
-  </div>
-);
+const PrevArrow = ({ onClick, sideBar }) =>
+  !sideBar && (
+    <div
+      onClick={onClick}
+      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white p-3 rounded-full cursor-pointer bg-black/50 hover:bg-black/70"
+    >
+      <img src="/prev.svg" alt="Previous" className="w-6 h-6" />
+    </div>
+  );
 
-const Hero = () => {
+const Hero = ({ sideBar }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -49,8 +51,8 @@ const Hero = () => {
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow sideBar={sideBar} />,
+    prevArrow: <PrevArrow sideBar={sideBar} />,
   };
 
   return (

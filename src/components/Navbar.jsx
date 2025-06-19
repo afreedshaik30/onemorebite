@@ -11,8 +11,7 @@ import {
 import { FaWallet } from "react-icons/fa";
 import { IoPricetags } from "react-icons/io5";
 
-const Navbar = () => {
-  const [sideBar, setSideBar] = useState(false);
+const Navbar = ({ sideBar, setSideBar }) => {
   return (
     <div className="max-w-[1400px] mx-auto flex justify-between items-center p-4">
       {/* left side */}
